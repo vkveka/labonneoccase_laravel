@@ -1,6 +1,7 @@
 /* HEADER */
 * {
     font-family: 'Raleway', sans-serif;
+    
 }
 
 header img {
@@ -8,9 +9,9 @@ header img {
 }
 
 /* LOGIN */
-#register ::selection,
-#login ::selection {
+* ::selection {
     background-color: rgba(251, 251, 251, 0.322);
+    color: white;
 }
 
 #register section,
@@ -409,6 +410,12 @@ input[type="number"] {
 
 .card-index-plus {
     padding: 50px;
+}
+
+.no_annonce {
+    background-color: rgba(0, 0, 0, 0.553);
+    width: 600px;
+    padding: 20px 0;
 }
 
 

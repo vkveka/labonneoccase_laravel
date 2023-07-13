@@ -257,6 +257,11 @@
                                 </form>
                             </div>
                         @endforeach
+                        @if ($annoncesToSell->count() === 0)
+                            <div class="text-center mt-md-5 mt-0 no_annonce">
+                                <h2 class="my-auto">Pas d'atricles dans cette section</h2>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </section>
@@ -435,6 +440,11 @@
                                 </form>
                             </div>
                         @endforeach
+                        @if ($annoncesSold->count() === 0)
+                            <div class="text-center mt-md-5 mt-0 no_annonce">
+                                <h2 class="my-auto">Pas d'atricles dans cette section</h2>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </section>
