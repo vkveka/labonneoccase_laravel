@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('fuel');
             $table->text('description')->nullable();
             $table->tinyInteger('status');
+            $table->date('date_sold')->nullable();
             $table->timestamps();
         });
     }

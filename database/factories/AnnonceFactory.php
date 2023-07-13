@@ -23,9 +23,10 @@ class AnnonceFactory extends Factory
             'picture' => 'default_picture' . rand(1,7) . '.jpg',
             'year' => rand(2000,2023),
             'km' => round(rand(100000, 200000), -3), // Arrondir au millier le plus proche (-3 pour les milliers)
-            'fuel' => Arr::random(['essence', 'diesel', 'éthanol']),
+            'fuel' => Arr::random(['essence', 'diesel', 'ethanol', 'GPL', 'electrique']),
             'description' => $this->faker->paragraph(1, true),
-            'status' => $this->faker->randomElement([0, 1])
+            'status' => $this->faker->randomElement([0, 1]),
+            'date_sold' => null,
         ];
     }
 }

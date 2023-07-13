@@ -1,0 +1,467 @@
+/* HEADER */
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+header img {
+    width: 100%;
+}
+
+/* LOGIN */
+#register ::selection,
+#login ::selection {
+    background-color: rgba(251, 251, 251, 0.322);
+}
+
+#register section,
+#login section {
+    background-image: url(../../public/images/suprabnw.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+}
+
+#register h1,
+#login h1 {
+    font-family: 'Foldit', cursive;
+}
+
+#register form,
+#login form {
+    margin-top: 5%;
+    color: white;
+}
+
+#register form label #login form label {
+    font-style: italic;
+}
+
+#register form input,
+#login form input {
+    background-color: transparent;
+    color: white;
+}
+
+#register .text_header h1,
+#login .text_header h1 {
+    font-size: 110px;
+}
+
+#register .text_header,
+#login .text_header {
+    padding-top: 100px;
+    font-family: 'Foldit', cursive;
+}
+
+
+/* NAVBAR */
+nav {
+    background-color: black;
+    border-bottom: solid 20px #9c8b7cc7;
+}
+
+nav .dropdown-item.active,
+nav .dropdown-item:active {
+    background-color: #9c8b7c;
+}
+
+nav .dropdown-item:hover {
+    background-color: #9c8b7cc7;
+    color: white;
+}
+
+.navbar-toggler {
+    color: transparent;
+}
+
+.nav-link {
+    margin: 0 50px;
+    font-size: 18px;
+    color: #9c8b7c;
+    font-weight: 600;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+/* MAIN */
+.alert_div {
+    position: fixed;
+    top: 70px;
+    z-index: 9998;
+    padding: 20px;
+}
+
+#home_main {
+    background: url(../../public/images/vintage_background.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+}
+
+.main_section {
+    padding-top: 100px;
+    border: 20px solid #9c8b7c;
+    border-top: none;
+}
+
+.contact_header {
+    background-color: #afafaf8f;
+    width: 310px;
+    border-radius: 5px;
+    color: black;
+}
+
+#sold h1,
+#dispo h1 {
+    background-color: rgba(255, 255, 255, 0.816);
+    padding: 10px 0;
+    border: solid 4px #9c8b7c;
+    color: #9c8b7c;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+#dispo .all_in {
+    box-shadow: 0 0 8px black;
+}
+
+#sold .carousel-item,
+#dispo .card-index-forsell {
+    background-color: #c8b3a1;
+    padding: 20px;
+    border: solid 10px #9c8b7c;
+    box-shadow: 1px 1px 10px black;
+}
+
+#sold img:not(#sold .info_selling img),
+#dispo .img_for_sell,
+#catalogueSold .img_for_sell,
+#catalogueAdd .img_for_sell,
+#catalogueDispo .img_for_sell {
+    padding: 10px 10px 0 10px;
+    background-color: #9c8b7c;
+}
+
+.parent_info_selling {
+    padding-top: 10px;
+    display: flex;
+    background-color: #9c8b7c;
+}
+
+#catalogueSold .parent_info_selling,
+#catalogueAdd .parent_info_selling,
+#catalogueDispo .parent_info_selling {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: transparent;
+}
+
+#catalogueSold .title_car,
+#catalogueAdd .title_car,
+#catalogueDispo .title_car {
+    border: none;
+    color: black;
+    margin-top: 10px;
+}
+
+#catalogueAdd .title_car {
+    background-color: transparent;
+}
+
+#sold .info_selling img,
+#catalogueDispo .info_selling img,
+#catalogueSold .info_selling img,
+#catalogueAdd .info_selling img,
+#dispo .info_selling img {
+    width: 1.5em;
+}
+
+.title_car {
+    background-color: #c8b3a1;
+    border: solid 10px #9c8b7c;
+    border-top: none;
+    border-bottom: none;
+}
+
+.link_lbc a {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.767);
+}
+
+#carousel_sold_desc img,
+#carousel_sold img {
+    width: 100%;
+}
+
+#sold {
+    margin-bottom: 100px;
+}
+
+#dispo .nocars-index {
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.484);
+    padding: 15px 10px;
+    box-shadow: 1px 1px 10px black;
+}
+
+.the_line {
+    margin: 100px 0;
+}
+
+
+/* FOOTER */
+footer h1 {
+    font-family: 'Foldit', cursive;
+}
+
+footer a img {
+    width: 3.5em;
+}
+
+footer #logo_footer {
+    width: 13em;
+}
+
+footer #title_footer_lbo h1 {
+    font-size: 60px;
+    margin-bottom: 50px;
+}
+
+footer #title_footer_lbo {
+    font-family: 'Foldit', cursive;
+}
+
+
+/* ESPACE PERSO */
+footer #logo_footer,
+nav img {
+    transition: 1s
+}
+
+footer #logo_footer:hover,
+nav:hover img {
+    transform: rotate(720deg);
+}
+
+footer .menu_footer {
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+footer .menu_footer a {
+    text-decoration: none;
+    border-bottom: rgb(147, 147, 147) solid 2px;
+}
+
+footer .link_footer {
+    color: rgb(147, 147, 147);
+    font-weight: bold;
+}
+
+footer .link_footer img {
+    transition: 0.3s;
+}
+
+footer .link_footer img:hover {
+    transform: translateY(7px);
+}
+
+footer iframe {
+    transition: 0.3s;
+    box-shadow: 0 0 10px black;
+    filter: grayscale(0.6);
+}
+
+footer iframe:hover {
+    transform: scale(1.03);
+}
+
+
+#catalogues {
+    background: url(../../public/images/supra.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 100px;
+}
+
+#catalogueDispo h1,
+#catalogueSold h1,
+#catalogueAdd h1 {
+    background-color: rgba(255, 255, 255, 0.693);
+    border-radius: 10px;
+    color: black;
+    border: 3px solid white;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+#catalogueSold,
+#catalogueDispo,
+#catalogueAdd {
+    padding-top: 50px;
+}
+
+#catalogueSold form input,
+#catalogueDispo form input,
+#catalogueSold form select,
+#catalogueDispo form select {
+    background-color: rgba(255, 255, 255, 0.192);
+    border: none;
+}
+
+#catalogueAdd form select,
+#catalogueAdd form input {
+    background-color: rgba(0, 0, 0, 0.478);
+    color: white;
+}
+
+#catalogueSold form label,
+#catalogueAdd form label,
+#catalogueDispo form label {
+    font-weight: 600;
+}
+
+#nav_admin {
+    background-color: white;
+    border: none;
+    box-shadow: 1px 1px 10px black;
+}
+
+.card-index-plus .info_selling {
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.upload_img_style {
+    transition: 0.5s;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.change_status_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: white solid 5px;
+}
+
+
+.upload_img_style:hover {
+    border-radius: 20px;
+    filter: blur(1px) grayscale(1);
+}
+
+.icon_upload_img {
+    opacity: 0;
+    transition: 0.5s;
+    width: 3em;
+    position: absolute;
+    pointer-events: none;
+}
+
+.change_status_icon:hover .icon_upload_img {
+    opacity: 1;
+}
+
+#catalogueDispo .card-index-forsell,
+#catalogueAdd .card-index-plus,
+#catalogueSold .card-index-forsell {
+    background-color: rgba(232, 232, 232, 0.896);
+    border: white solid 5px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgb(82, 82, 82);
+    padding: 20px;
+    /* border: solid 10px #9c8b7c; */
+}
+
+#catalogueDispo .title_car,
+#catalogueSold .title_car {
+    background-color: transparent;
+}
+
+#catalogueDispo form select,
+#catalogueDispo form input,
+#catalogueSold form select,
+#catalogueSold form input {
+    background-color: white;
+}
+
+#catalogueAdd .link_lbc button,
+#catalogueDispo .link_lbc button,
+#catalogueSold .link_lbc button {
+    border: 1px solid black;
+}
+
+.card-index-plus {
+    padding: 50px;
+}
+
+
+
+
+/* MEDIA QUERY */
+/* MEDIA QUERY */
+/* MEDIA QUERY */
+@media screen and (max-width:991px) {
+    .nav-link {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    #sold h1,
+    #dispo h1,
+    #catalogueDispo,
+    #catalogueSold,
+    #catalogueAdd {
+        margin: 0 30px;
+    }
+
+    #carousel_sold_desc {
+        display: none;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .card-index-forsell,
+    .card-index-plus {
+        padding: 30px 20px;
+    }
+
+    footer #title_footer_lbo h1 {
+        margin-bottom: 20px;
+    }
+}
+
+
+
+@media screen and (max-width:500px) {
+    footer .menu_footer {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:450px) {
+    footer iframe {
+        width: 95%;
+    }
+
+
+}
