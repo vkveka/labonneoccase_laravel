@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('year');
             $table->integer('km');
             $table->string('fuel');
+            $table->integer('price');
             $table->text('description')->nullable();
             $table->tinyInteger('status');
             $table->date('date_sold')->nullable();

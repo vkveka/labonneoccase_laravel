@@ -14,7 +14,9 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        $annoncesToSell = Annonce::where('status', 0)->get();
+        $annoncesToSell = Annonce::whereIn('status', [2, 0])
+            ->orderBy('status', 'asc')
+            ->get();
         $annoncesSold = Annonce::where('status', 1)->get();
         $annoncesSoldDesc = Annonce::where('status', 1)->orderBy('id', 'desc')->get();
 
@@ -51,9 +53,10 @@ class AnnonceController extends Controller
             'year' => 'required|max:40',
             'km' => 'required',
             'fuel' => 'required|max:1000',
+            'price' => 'required',
             'title' => 'required|max:50',
             'description' => 'nullable',
-            'status' => 'required|in:0,1',
+            'status' => 'required|in:0,1,2',
         ]);
 
         $annonce = new Annonce();
@@ -71,6 +74,7 @@ class AnnonceController extends Controller
         $annonce->year = $request->year;
         $annonce->km = $request->km;
         $annonce->fuel = $request->fuel;
+        $annonce->price = $request->price;
         $annonce->title = $request->title;
         $annonce->description = $request->description;
         $annonce->status = $request->status;
@@ -116,9 +120,10 @@ class AnnonceController extends Controller
             'year' => 'required|max:40',
             'km' => 'required',
             'fuel' => 'required|max:1000',
+            'price' => 'required',
             'title' => 'required|max:50',
             'description' => 'nullable',
-            'status' => 'required|in:0,1',
+            'status' => 'required|in:0,1,2',
         ]);
 
         if ($request->hasFile('picture')) {
@@ -134,6 +139,7 @@ class AnnonceController extends Controller
         $annonce->year = $request->year;
         $annonce->km = $request->km;
         $annonce->fuel = $request->fuel;
+        $annonce->price = $request->price;
         $annonce->title = $request->title;
         $annonce->description = $request->description;
         $annonce->status = $request->status;

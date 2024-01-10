@@ -27,4 +27,5 @@ Route::resource('/home', App\Http\Controllers\AnnonceController::class);
 Route::resource('/annonces', App\Http\Controllers\AnnonceController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/privacy', [App\Http\Controllers\AdminController::class, 'privacy'])->name('privacy');
 Route::get('/Rhlmcabr0n', [App\Http\Controllers\AdminController::class, 'index'])->name('Rhlmcabr0n');

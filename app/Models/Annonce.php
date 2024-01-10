@@ -20,6 +20,7 @@ class Annonce extends Model
         'year',
         'km',
         'fuel',
+        'price',
         'description',
         'status',
     ];

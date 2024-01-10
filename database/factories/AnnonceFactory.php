@@ -24,6 +24,7 @@ class AnnonceFactory extends Factory
             'year' => rand(2000,2023),
             'km' => round(rand(100000, 200000), -3), // Arrondir au millier le plus proche (-3 pour les milliers)
             'fuel' => Arr::random(['essence', 'diesel', 'ethanol', 'GPL', 'electrique']),
+            'price' => round(rand(1200, 5000), -2),
             'description' => $this->faker->paragraph(1, true),
             'status' => $this->faker->randomElement([0, 1]),
             'date_sold' => null,

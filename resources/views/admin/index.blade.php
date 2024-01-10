@@ -37,7 +37,7 @@
                                                     alt="icon-voiture-à-vendre">
                                             </div>
                                             <div class="col-sm-9 col-10">
-                                                <input type="number" class="form-control" id="km" name="km"
+                                                <input type="text" class="form-control" id="km" name="km"
                                                     required>
                                             </div>
                                         </div>
@@ -56,6 +56,16 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="row info_selling mb-2">
+                                            <div class="col-2 my-auto">
+                                                <img class="" src="./images/icons/euro.png"
+                                                    alt="icon-voiture-à-vendre">
+                                            </div>
+                                            <div class="col-9 ">
+                                                <input type="number" class="form-control" id="price" name="price"
+                                                    required>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row title_car">
@@ -66,7 +76,8 @@
                                     <div class="col-6">
                                         <label for="status" class="form-label">Statut</label>
                                         <select class="form-control" id="status" name="status" required>
-                                            <option value="0" selected>À vendre</option>
+                                            <option value="2" selected>Bientôt disponible</option>
+                                            <option value="0">À vendre</option>
                                             <option value="1">Vendu</option>
                                         </select>
                                     </div>
@@ -102,8 +113,9 @@
                                     @method('PUT')
 
                                     <div class="row">
-                                        <div class="col-6 mx-auto">
-                                            <div class="change_status_icon" style="position: relative">
+                                        <div class="col-6">
+                                            <div id="change_status_icon_id{{ $annonce->id }}" class="change_status_icon"
+                                                style="position: relative">
                                                 <img src="{{ asset("./images/annonces/$annonce->picture") }}"
                                                     id="old{{ $annonce->id }}" alt="voitures d'occasion à vendre"
                                                     class="upload_img_style" style="cursor: pointer;"
@@ -115,8 +127,8 @@
                                                 id="file-input{{ $annonce->id }}" name="picture" style="display: none;"
                                                 accept="image/*">
 
-                                            <img src="#" id="preview{{ $annonce->id }}"
-                                                style="display: none; max-width: 100%;">
+                                            <img class="change_status_icon" src="#"
+                                                id="preview{{ $annonce->id }}" style="display: none; max-width: 100%;">
                                         </div>
 
 
@@ -137,7 +149,7 @@
                                                         alt="icon-voiture-à-vendre">
                                                 </div>
                                                 <div class="col-9 ">
-                                                    <input type="number" class="form-control" id="km"
+                                                    <input type="text" class="form-control" id="km"
                                                         name="km" value="{{ $annonce->km }}" required>
                                                 </div>
                                             </div>
@@ -169,6 +181,16 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="row info_selling mb-2">
+                                                <div class="col-3 my-auto">
+                                                    <img class="" src="./images/icons/euro.png"
+                                                        alt="icon-voiture-à-vendre">
+                                                </div>
+                                                <div class="col-9 ">
+                                                    <input type="number" class="form-control" id="price"
+                                                        name="price" value="{{ $annonce->price }}" required>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row title_car">
@@ -180,10 +202,13 @@
                                         <div class="col-6">
                                             <label for="status" class="form-label">Statut</label>
                                             <select class="form-control" id="status" name="status" required>
-                                                <option value="0" {{ $annonce->status == 0 ? 'selected' : '' }}>À
-                                                    vendre
+                                                <option value="0" {{ $annonce->status == 0 ? 'selected' : '' }}>
+                                                    À vendre
                                                 </option>
                                                 <option value="1" {{ $annonce->status == 1 ? 'selected' : '' }}>Vendu
+                                                </option>
+                                                <option value="2" {{ $annonce->status == 2 ? 'selected' : '' }}>
+                                                    Bientôt disponible
                                                 </option>
                                             </select>
 
@@ -224,7 +249,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body text-dark">
-                                                    Voulez-vous vraiment supprimer l'annonce ?
+                                                    Supprimer définitivement l'annonce : <b>{{ $annonce->title }}</b> ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -248,7 +273,8 @@
                                                 reader.onload = function(e) {
                                                     document.getElementById('preview{{ $annonce->id }}').setAttribute('src', e.target.result);
                                                     document.getElementById('preview{{ $annonce->id }}').style.display = 'block';
-                                                    document.getElementById('old{{ $annonce->id }}').style.display = 'none';
+                                                    document.getElementById('change_status_icon_id{{ $annonce->id }}').style.display = 'none';
+                                                    // document.getElementById('old{{ $annonce->id }}').style.display = 'none';
                                                 };
                                                 reader.readAsDataURL(input.files[0]);
                                             }
@@ -258,8 +284,8 @@
                             </div>
                         @endforeach
                         @if ($annoncesToSell->count() === 0)
-                            <div class="text-center mt-md-5 mt-0 no_annonce">
-                                <h2 class="my-auto">Pas d'atricles dans cette section</h2>
+                            <div class="text-center mt-md-5 mt-0 no_annonce text-light">
+                                <h2 class="my-auto">Pas d'article dans cette section</h2>
                             </div>
                         @endif
                     </div>
@@ -282,7 +308,8 @@
 
                                     <div class="row">
                                         <div class="col-6">
-                                            <div class="change_status_icon" style="position: relative">
+                                            <div id="change_status_icon_id{{ $annonce->id }}" class="change_status_icon"
+                                                style="position: relative">
                                                 <img src="{{ asset("./images/annonces/$annonce->picture") }}"
                                                     id="old{{ $annonce->id }}" alt="voitures d'occasion à vendre"
                                                     class="upload_img_style" style="cursor: pointer;"
@@ -294,8 +321,8 @@
                                                 id="file-input{{ $annonce->id }}" name="picture" style="display: none;"
                                                 accept="image/*">
 
-                                            <img src="#" id="preview{{ $annonce->id }}"
-                                                style="display: none; max-width: 100%;">
+                                            <img class="change_status_icon" src="#"
+                                                id="preview{{ $annonce->id }}" style="display: none; max-width: 100%;">
                                         </div>
 
 
@@ -316,7 +343,7 @@
                                                         alt="icon-voiture-à-vendre">
                                                 </div>
                                                 <div class="col-9 ">
-                                                    <input type="number" class="form-control" id="km"
+                                                    <input type="text" class="form-control" id="km"
                                                         name="km" value="{{ $annonce->km }}">
                                                 </div>
                                             </div>
@@ -348,6 +375,16 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="row info_selling mb-2">
+                                                <div class="col-3 my-auto">
+                                                    <img class="" src="./images/icons/euro.png"
+                                                        alt="icon-voiture-à-vendre">
+                                                </div>
+                                                <div class="col-9 ">
+                                                    <input type="number" class="form-control" id="price"
+                                                        name="price" value="{{ $annonce->price }}" required>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row title_car">
@@ -364,6 +401,9 @@
                                                 </option>
                                                 <option value="1" {{ $annonce->status == 1 ? 'selected' : '' }}>
                                                     Vendu
+                                                </option>
+                                                <option value="2" {{ $annonce->status == 2 ? 'selected' : '' }}>
+                                                    Bientôt disponible
                                                 </option>
                                             </select>
 
@@ -406,7 +446,7 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body text-dark">
-                                                    Voulez-vous vraiment supprimer l'annonce ?
+                                                    Supprimer définitivement l'annonce : <b>{{ $annonce->title }}</b> ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -431,7 +471,8 @@
                                                 reader.onload = function(e) {
                                                     document.getElementById('preview{{ $annonce->id }}').setAttribute('src', e.target.result);
                                                     document.getElementById('preview{{ $annonce->id }}').style.display = 'block';
-                                                    document.getElementById('old{{ $annonce->id }}').style.display = 'none';
+                                                    document.getElementById('change_status_icon_id{{ $annonce->id }}').style.display = 'none';
+                                                    // document.getElementById('old{{ $annonce->id }}').style.display = 'none';
                                                 };
                                                 reader.readAsDataURL(input.files[0]);
                                             }
@@ -441,8 +482,8 @@
                             </div>
                         @endforeach
                         @if ($annoncesSold->count() === 0)
-                            <div class="text-center mt-md-5 mt-0 no_annonce">
-                                <h2 class="my-auto">Pas d'atricles dans cette section</h2>
+                            <div class="text-center mt-md-5 mt-0 no_annonce text-light">
+                                <h2 class="my-auto">Pas d'article dans cette section</h2>
                             </div>
                         @endif
                     </div>

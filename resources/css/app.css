@@ -1,7 +1,7 @@
 /* HEADER */
 * {
     font-family: 'Raleway', sans-serif;
-    
+
 }
 
 header img {
@@ -61,7 +61,7 @@ header img {
 /* NAVBAR */
 nav {
     background-color: black;
-    border-bottom: solid 20px #9c8b7cc7;
+    border-bottom: solid 20px #9c8b7c;
 }
 
 nav .dropdown-item.active,
@@ -129,8 +129,61 @@ nav .dropdown-item:hover {
     border-radius: 10px;
 }
 
+#sold .all_in,
 #dispo .all_in {
     box-shadow: 0 0 8px black;
+}
+
+#dispo .all_in_dispo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 100px solid rgba(0, 0, 0, 0.608);
+    border-bottom: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 1;
+}
+
+/* #sold .all_in::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 100px solid rgba(0, 0, 0, 0.608);
+    border-bottom: 100px solid transparent;
+    transform: rotate(90deg);
+    z-index: 1;
+} */
+
+.price {
+    color: #fff;
+    text-shadow: 0 0 2px black;
+    top: 5%;
+    right: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    transform: rotate(45deg);
+    z-index: 2;
+}
+
+.dispo_soon {
+    color: #fff;
+    text-shadow: 0 0 2px black;
+    top: 58%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+
+.all_in_soon .brightness_soon {
+    filter: brightness(0.7);
 }
 
 #sold .carousel-item,
@@ -221,6 +274,7 @@ nav .dropdown-item:hover {
 /* FOOTER */
 footer h1 {
     font-family: 'Foldit', cursive;
+    color: white;
 }
 
 footer a img {
@@ -440,7 +494,7 @@ input[type="number"] {
         margin: 0 30px;
     }
 
-    #carousel_sold_desc {
+    #carousel_sold {
         display: none;
     }
 }
@@ -458,6 +512,19 @@ input[type="number"] {
 }
 
 
+
+@media screen and (max-width:550px) {
+
+    #login .text_header h1,
+    #register .text_header h1 {
+        font-size: 60px;
+    }
+
+    #login .text_header,
+    #register .text_header {
+        padding-top: 60px;
+    }
+}
 
 @media screen and (max-width:500px) {
     footer .menu_footer {

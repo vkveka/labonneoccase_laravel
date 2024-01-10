@@ -33,7 +33,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        if (User::count() > 0) {
+        if (User::count() > 1) {
             return redirect('/login');
         } else {
             return view('auth/register');

@@ -11,14 +11,16 @@ class AdminController extends Controller
     public function index()
     {
         if (!auth()->check()) {
-            if (User::count() === 0) {
+            if (User::count() === 1) {
                 return redirect('/register');
             } else {
                 return redirect('/login');
             }
         } else {
             // je récupère toutes les données nécessaires
-            $annoncesToSell = Annonce::where('status', 0)->get();
+            $annoncesToSell = Annonce::whereIn('status', [0, 2])
+                ->orderBy('id', 'desc')
+                ->get();
             $annoncesSold = Annonce::where('status', 1)->get();
             $users = User::all();
 
@@ -30,4 +32,9 @@ class AdminController extends Controller
             ]);
         }
     }
+
+    // public function privacy()
+    // {
+    //     return view('privacy');
+    // }
 }

@@ -53,9 +53,16 @@
                     @endif
                     @foreach ($annoncesToSell as $annonce)
                         <div class="col-xl-3 col-lg-5 col-sm-6 col-11 m-5 card-index-forsell">
-                            <div class="all_in">
+                            <div class="all_in {{ $annonce->status == 0 ? 'all_in_dispo' : 'all_in_soon' }}"
+                                style="position: relative; display: inline-block;">
+                                @if ($annonce->status == 0)
+                                    <span style="position: absolute" class="price">{{ $annonce->price }} €</span>
+                                @else
+                                    <span style="position: absolute" class="dispo_soon">{{ 'Bientôt disponible !' }}</span>
+                                @endif
                                 <div class="col-12 img_for_sell">
-                                    <img src="{{ asset("./images/annonces/$annonce->picture") }}"
+                                    <img class="{{ $annonce->status == 2 ? 'brightness_soon' : '' }}"
+                                        src="{{ asset("./images/annonces/$annonce->picture") }}"
                                         alt="voitures d'occasion à vendre" style="width: 100%;">
                                 </div>
                                 <div class="col-12 title_car text-center"><b>{{ $annonce->title }}</b></div>
@@ -83,32 +90,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="link_lbc col-lg-10 col-sm-10 col-6 text-center mx-auto  ">
-                                <a class="btn" target="_blank" href="{{ $annonce->description }}">Voir l'annonce</a>
-                            </div>
+                            @if ($annonce->status == 2)
+                                <div class="link_lbc col-lg-10 col-sm-10 col-6 text-center mx-auto">
+                                    <a class="btn">Annonce indisponible</a>
+                                </div>
+                            @else
+                                <div class="link_lbc col-lg-10 col-sm-10 col-6 text-center mx-auto">
+                                    <a class="btn" target="_blank" href="{{ $annonce->description }}">Voir l'annonce</a>
+                                </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
             </div>
         </section>
 
-        {{-- <!-- Section bloc d'informations : ACHAT & VENTE -->
-        <div class="col-11 mx-auto justify-content-center bloc_achat_vente text-center" id="bloc_achat_vente_mobile">
-            <h1><b>VENTE DE VEHICULES TOUTES MARQUES</b></h1>
-            <h6>Tous nos véhicules sont vendus révisés avec un contrôle technique de moins de 6 mois et garantis.</h6>
-            <div class="col-8 mx-auto mb-5" style="border-top: 2px solid white"></div>
-            <h6>N'hésitez pas à nous contacter par mail ou par téléphone.</h6>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <h6 class="contact_header">la-bonne-occase@outlook.fr</h6>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <h6 class="contact_header m-0">+33 6 77 58 51 49</h6>
-                </div>
-            </div>
-        </div> --}}
         <div class="col-8 mx-auto the_line" style="border-top: 2px solid white"></div>
 
         <section id="sold">
@@ -124,30 +120,33 @@
 
                                 @foreach ($annoncesSold as $key => $annonce)
                                     <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="4000">
-                                        <img src="{{ asset("./images/annonces/$annonce->picture") }}"
-                                            alt="voiture d'occasion vendue">
-                                        <div class="col-12 title_car text-center"><b>{{ $annonce->title }}</b>
-                                        </div>
-                                        <div class="col-12 text-center parent_info_selling">
-                                            <div class="col-4 info_selling">
-                                                <img class="mx-auto" src="{{ asset('./images/icons/year.png') }}"
-                                                    alt="icon-voiture-à-vendre">
-                                                <div class="row">
-                                                    <p>{{ $annonce->year }}</p>
-                                                </div>
+                                        <div class="all_in" style="position: relative; display: inline-block;">
+                                            {{-- <span style="position: absolute" class="price">{{ $annonce->price }} €</span> --}}
+                                            <img src="{{ asset("./images/annonces/$annonce->picture") }}"
+                                                alt="voiture d'occasion vendue">
+                                            <div class="col-12 title_car text-center"><b>{{ $annonce->title }}</b>
                                             </div>
-                                            <div class="col-4 info_selling">
-                                                <img class="mx-auto" src="{{ asset('./images/icons/km.png') }}"
-                                                    alt="icon-voiture-à-vendre">
-                                                <div class="row">
-                                                    <p>{{ $annonce->km }}</p>
+                                            <div class="col-12 text-center parent_info_selling">
+                                                <div class="col-4 info_selling">
+                                                    <img class="mx-auto" src="{{ asset('./images/icons/year.png') }}"
+                                                        alt="icon-voiture-à-vendre">
+                                                    <div class="row">
+                                                        <p>{{ $annonce->year }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-4 info_selling">
-                                                <img class="mx-auto" src="{{ asset('./images/icons/fuel.png') }}"
-                                                    alt="icon-voiture-à-vendre">
-                                                <div class="row">
-                                                    <p>{{ $annonce->fuel }}</p>
+                                                <div class="col-4 info_selling">
+                                                    <img class="mx-auto" src="{{ asset('./images/icons/km.png') }}"
+                                                        alt="icon-voiture-à-vendre">
+                                                    <div class="row">
+                                                        <p>{{ $annonce->km }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 info_selling">
+                                                    <img class="mx-auto" src="{{ asset('./images/icons/fuel.png') }}"
+                                                        alt="icon-voiture-à-vendre">
+                                                    <div class="row">
+                                                        <p>{{ $annonce->fuel }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -178,30 +177,33 @@
 
                                 @foreach ($annoncesSoldDesc as $key => $annonce)
                                     <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="4000">
-                                        <img src="{{ asset("./images/annonces/$annonce->picture") }}"
-                                            alt="voiture d'occasion vendue">
-                                        <div class="col-12 title_car text-center"><b>{{ $annonce->title }}</b>
-                                        </div>
-                                        <div class="col-12 text-center parent_info_selling">
-                                            <div class="col-4 info_selling">
-                                                <img class="mx-auto" src="{{ asset('./images/icons/year.png') }}"
-                                                    alt="icon-voiture-à-vendre">
-                                                <div class="row">
-                                                    <p>{{ $annonce->year }}</p>
-                                                </div>
+                                        <div class="all_in" style="position: relative; display: inline-block;">
+                                            {{-- <span style="position: absolute" class="price">{{ $annonce->price }} €</span> --}}
+                                            <img src="{{ asset("./images/annonces/$annonce->picture") }}"
+                                                alt="voiture d'occasion vendue">
+                                            <div class="col-12 title_car text-center"><b>{{ $annonce->title }}</b>
                                             </div>
-                                            <div class="col-4 info_selling">
-                                                <img class="mx-auto" src="{{ asset('./images/icons/km.png') }}"
-                                                    alt="icon-voiture-à-vendre">
-                                                <div class="row">
-                                                    <p>{{ $annonce->km }}</p>
+                                            <div class="col-12 text-center parent_info_selling">
+                                                <div class="col-4 info_selling">
+                                                    <img class="mx-auto" src="{{ asset('./images/icons/year.png') }}"
+                                                        alt="icon-voiture-à-vendre">
+                                                    <div class="row">
+                                                        <p>{{ $annonce->year }}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-4 info_selling">
-                                                <img class="mx-auto" src="{{ asset('./images/icons/fuel.png') }}"
-                                                    alt="icon-voiture-à-vendre">
-                                                <div class="row">
-                                                    <p>{{ $annonce->fuel }}</p>
+                                                <div class="col-4 info_selling">
+                                                    <img class="mx-auto" src="{{ asset('./images/icons/km.png') }}"
+                                                        alt="icon-voiture-à-vendre">
+                                                    <div class="row">
+                                                        <p>{{ $annonce->km }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4 info_selling">
+                                                    <img class="mx-auto" src="{{ asset('./images/icons/fuel.png') }}"
+                                                        alt="icon-voiture-à-vendre">
+                                                    <div class="row">
+                                                        <p>{{ $annonce->fuel }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

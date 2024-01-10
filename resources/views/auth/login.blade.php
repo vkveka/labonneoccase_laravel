@@ -62,11 +62,11 @@
                                         {{ __('Connexion') }}
                                     </button>
 
-                                    @if (Route::has('password.request'))
+                                    {{-- @if (Route::has('password.request'))
                                         <a class="btn btn-link text-light" href="{{ route('password.request') }}">
                                             {{ __('Mot de passe oublié?') }}
                                         </a>
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
 
